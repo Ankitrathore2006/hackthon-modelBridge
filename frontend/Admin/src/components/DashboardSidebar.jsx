@@ -27,12 +27,6 @@ const DashboardSidebar = () => {
     },
     
     {
-      name: "API Usage",
-      href: "/api-usage",
-      icon: Activity,
-      description: "Model usage and analytics"
-    },
-    {
       name: "Logs",
       href: "/logs",
       icon: FileText,

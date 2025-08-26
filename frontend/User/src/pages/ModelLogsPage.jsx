@@ -136,8 +136,155 @@ export function ModelLogsPage() {
           </div>
 
           {/* Stats */}
-          {/* ✅ use totalCalls, successCalls, avgResponseTime, totalCost */}
-          {/* ... (your stats cards unchanged, using these values) */}
+           {/* Stats Cards */}
+                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+                      <div className="bg-white overflow-hidden shadow rounded-lg">
+                        <div className="p-5">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0">
+                              <Activity className="h-6 w-6 text-blue-600" />
+                            </div>
+                            <div className="ml-5 w-0 flex-1">
+                              <dl>
+                                <dt className="text-sm font-medium text-gray-500 truncate">
+                                  Total API Calls
+                                </dt>
+                                <dd className="text-lg font-semibold text-gray-900">
+                                  {totalCalls}
+                                </dd>
+                              </dl>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+          
+                      <div className="bg-white overflow-hidden shadow rounded-lg">
+                        <div className="p-5">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0">
+                              <CheckCircle className="h-6 w-6 text-green-600" />
+                            </div>
+                            <div className="ml-5 w-0 flex-1">
+                              <dl>
+                                <dt className="text-sm font-medium text-gray-500 truncate">
+                                  Success Rate
+                                </dt>
+                                <dd className="text-lg font-semibold text-gray-900">
+                                  {totalCalls > 0 ? Math.round((successCalls / totalCalls) * 100) : 0}%
+                                </dd>
+                              </dl>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+          
+                      <div className="bg-white overflow-hidden shadow rounded-lg">
+                        <div className="p-5">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0">
+                              <TrendingUp className="h-6 w-6 text-purple-600" />
+                            </div>
+                            <div className="ml-5 w-0 flex-1">
+                              <dl>
+                                <dt className="text-sm font-medium text-gray-500 truncate">
+                                  Avg Response Time
+                                </dt>
+                                <dd className="text-lg font-semibold text-gray-900">
+                                  {Math.round(avgResponseTime)}ms
+                                </dd>
+                              </dl>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+          
+                      <div className="bg-white overflow-hidden shadow rounded-lg">
+                        <div className="p-5">
+                          <div className="flex items-center">
+                            <div className="flex-shrink-0">
+                              <FileText className="h-6 w-6 text-orange-600" />
+                            </div>
+                            <div className="ml-5 w-0 flex-1">
+                              <dl>
+                                <dt className="text-sm font-medium text-gray-500 truncate">
+                                  Total Cost
+                                </dt>
+                                <dd className="text-lg font-semibold text-gray-900">
+                                  ${totalCost.toFixed(3)}
+                                </dd>
+                              </dl>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+          
+                    {/* Filters and Search */}
+                    <div className="bg-white shadow rounded-lg mb-8">
+                      <div className="px-6 py-4 border-b border-gray-200">
+                        <h2 className="text-lg font-medium text-gray-900">Filters & Search</h2>
+                      </div>
+                      <div className="p-6">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Search
+                            </label>
+                            <div className="relative">
+                              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                              <input
+                                type="text"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                placeholder="Search models, endpoints..."
+                                className="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              />
+                            </div>
+                          </div>
+          
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Status
+                            </label>
+                            <select
+                              value={statusFilter}
+                              onChange={(e) => setStatusFilter(e.target.value)}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+                              <option value="all">All Status</option>
+                              {statuses.map(status => (
+                                <option key={status} value={status}>
+                                  {status.charAt(0).toUpperCase() + status.slice(1)}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+          
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Model
+                            </label>
+                            <select
+                              value={modelFilter}
+                              onChange={(e) => setModelFilter(e.target.value)}
+                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+                              <option value="all">All Models</option>
+                              {models.map(model => (
+                                <option key={model} value={model}>{model}</option>
+                              ))}
+                            </select>
+                          </div>
+          
+                          <div className="flex items-end">
+                            <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors flex items-center justify-center">
+                              <RefreshCw className="h-4 w-4 mr-2" />
+                              Refresh
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
           {/* Logs Table */}
           <div className="bg-white shadow rounded-lg">

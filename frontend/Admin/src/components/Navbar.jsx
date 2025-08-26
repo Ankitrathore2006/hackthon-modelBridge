@@ -13,6 +13,13 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-full">
           <div className="flex items-center gap-8">
             {/* Logo removed */}
+            <Link
+              to={"/"}
+              className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600"
+            >
+              ModelBridge
+            </Link>
+
           </div>
 
           <div className="flex items-center gap-3">

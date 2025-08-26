@@ -50,7 +50,7 @@ const App = () => {
           <DashboardSidebar />
           <main className="flex-1 overflow-auto">
             <Routes>
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/api-keys" element={<ApiKeyPage />} />
               
               <Route path="/api-usage" element={<ApiUsagePage />} />

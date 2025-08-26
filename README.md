@@ -2,6 +2,8 @@
 
 A commercial API service that provides AI safety detection and LLM response generation for chatbot companies.
 
+![Preview](video.mov)
+
 ## 🎯 **What It Does**
 
 1. **Receives chat requests** from chatbot companies

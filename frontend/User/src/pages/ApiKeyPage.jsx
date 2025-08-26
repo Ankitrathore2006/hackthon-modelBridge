@@ -11,7 +11,6 @@ import {
   Trash2,
   CheckCircle,
   AlertCircle,
-  RefreshCw,
 } from "lucide-react";
 
 export function ApiKeyPage() {
