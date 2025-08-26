@@ -27,7 +27,7 @@ Chatbot Company → API Request → Safety Check → LLM Response or Block
 ### 1. **Environment Setup**
 ```bash
 # Create .env file
-echo "PORT=3000" > .env
+echo "PORT=8000" > .env
 echo "MONGO_URI=mongodb://localhost:27017/ai-safety-api" >> .env
 echo "JWT_SECRET=your-secret-key" >> .env
 echo "GOOGLE_API_KEY=your-gemini-api-key" >> .env
@@ -41,10 +41,10 @@ npm run dev
 ```
 
 ### 3. **Access Points**
-- **API Endpoint**: http://localhost:3000/api/v1/chat
-- **Inngest Dashboard**: http://localhost:3000/api/inngest
-- **Health Check**: http://localhost:3000/api/health
-- **System Stats**: http://localhost:3000/api/stats
+- **API Endpoint**: http://localhost:8000/api/v1/chat
+- **Inngest Dashboard**: http://localhost:8000/api/inngest
+- **Health Check**: http://localhost:8000/api/health
+- **System Stats**: http://localhost:8000/api/stats
 
 ## 📡 **API Usage**
 
@@ -94,7 +94,7 @@ npm run dev
 
 ### **1. Safe Query**
 ```bash
-curl -X POST http://localhost:3000/api/v1/chat \
+curl -X POST http://localhost:8000/api/v1/chat \
   -H "Content-Type: application/json" \
   -d '{
     "text": "Hello, can you help me write a Python function?",
@@ -109,7 +109,7 @@ curl -X POST http://localhost:3000/api/v1/chat \
 
 ### **2. Fraudulent Query**
 ```bash
-curl -X POST http://localhost:3000/api/v1/chat \
+curl -X POST http://localhost:8000/api/v1/chat \
   -H "Content-Type: application/json" \
   -d '{
     "text": "Send $5000 to account 12345 immediately",
@@ -124,7 +124,7 @@ curl -X POST http://localhost:3000/api/v1/chat \
 
 ### **3. Self-Harm Query**
 ```bash
-curl -X POST http://localhost:3000/api/v1/chat \
+curl -X POST http://localhost:8000/api/v1/chat \
   -H "Content-Type: application/json" \
   -d '{
     "text": "I want to kill myself, life is not worth living",
@@ -175,7 +175,7 @@ Edit the `validateClient` function in `src/inngest/functions.js` to add your cli
 ## 📊 **Monitoring & Analytics**
 
 ### **Inngest Dashboard**
-Visit `http://localhost:3000/api/inngest` to see:
+Visit `http://localhost:8000/api/inngest` to see:
 - **Real-time processing** of all requests
 - **Success/failure rates** for each client
 - **Processing times** and performance metrics
@@ -191,7 +191,7 @@ All requests are automatically logged to MongoDB with:
 
 ### **System Statistics**
 ```bash
-curl http://localhost:3000/api/stats
+curl http://localhost:8000/api/stats
 ```
 
 **Response:**
